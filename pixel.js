@@ -42,7 +42,8 @@ function decimalToBin(numero, digitos)
 		numero /= 2;
 	}
 
-	acumulador = '1' + acumulador;
+	if (numero > 0)
+		acumulador = '1' + acumulador;
 
 	acumulador = completarCeros(acumulador, digitos);
 
@@ -147,6 +148,17 @@ function iniciarGrilla(contenedor, dimension)
 
 		}
 	}
+}
+
+function limpiarGrillas()
+{
+	var celdas = document.querySelectorAll(".celda");
+	celdas.forEach((c) => c.style.backgroundColor = "white");
+}
+
+function clicbotonLimpiar()
+{
+	limpiarGrillas();
 }
 
 function inicializar()

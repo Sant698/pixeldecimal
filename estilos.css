@@ -90,7 +90,7 @@ div.celda
 }
 
 
-.boton
+.boton, .boton2
 {
 	border: 1px solid black;
 	background-color: lightcoral;
@@ -109,7 +109,12 @@ div.celda
 	font-weight: bold;
 }
 
-.boton:active
+.boton2
+{
+	background-color: skyblue;
+}
+
+.boton:active, .boton2:active
 {
 	background-color: yellow;
 }
