@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">  
+<head>    
+    <title>Pixel-Decimales</title>    
+    <meta charset="UTF-8">
+    <meta name="title" content="Pixel a decimal">
+    <meta name="description" content="Herramienta que permite convertir números decimales en una imagen">    
+    <link href="estilos.css" rel="stylesheet">
+    <script src="pixel.js">
+        numero = windows.prompt("Ingrese número");
+        binario = decToBin(numero);
+        window.alert(binario);       
+    </script>  
+</head>  
+
+<body onload="inicializar()">    
+    <header>
+        <h1>Pixel-decimal</h1>      
+        <p>Esta página permite convertir números decimales en un conjunto de pixeles que representan una imagen (usando dos colores)</p>
+        <div class="boton">
+           Clic acá para ingresar los números    
+        </div>
+    </header>    
+
+    <section>      
+        <article>
+            <div id="grilla">
+                <div id="cuadrado1" class="cuadrado"></div>
+            </div>      
+        </article>      
+    </section>
+</body>  
+
+</html>
