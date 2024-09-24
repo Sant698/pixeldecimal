@@ -7,12 +7,125 @@ function decimalABinario(num) {
     return resultado;
 }
 
-function decToBin(decimalSTR)
+function  completarCeros(texto, cantidad) {
+	var acumulador = texto;
+
+	var diferencia = cantidad - texto.length;
+	if (diferencia > 0 )
+	{
+		while(diferencia > 0)
+		{
+			acumulador = '0' + acumulador;
+			diferencia -= 1;
+		}
+	}
+
+	return acumulador;
+}
+
+function decimalToBin(numero, digitos)
+{
+	var acumulador = '';
+	while(numero > 1)
+	{
+		if (numero % 2 == 0)
+		{
+			acumulador = '0' + acumulador;
+			
+		}
+		else
+		{
+			acumulador = '1' + acumulador;
+			numero -= 1;
+		}
+
+		numero /= 2;
+	}
+
+	acumulador = '1' + acumulador;
+
+	acumulador = completarCeros(acumulador, digitos);
+
+
+
+	return acumulador;
+}
+
+//Convierte un número decimal ingresado como texto a binario
+function textoToBinario(decimalSTR, digitos)
 {
 	decimal = parseInt(decimalSTR, 10);
-	binario = decimalABinario(decimal);
-	return binario;
 
+	if (!isNaN(decimal)) //Not (NaN) = Not (Not a Number) = a Number = es un número
+	{
+		binario = decimalToBin(decimal, digitos);
+		return binario;		
+	}
+	else
+	{
+		return "";
+	}
+}
+
+function convertirABits(texto, digitos)
+{
+	texto = texto.split(' ');
+	var acumulador = "";
+
+	for (let t of texto)
+	{
+		acumulador += textoToBinario(t, digitos);
+		console.log('t: ' + t + " / textoToBinario " + textoToBinario(t, digitos));
+	}
+
+	return acumulador;
+}
+
+function mostrarBits8(bitaje, dimensiones)
+{
+	if (bitaje.length ==  (dimensiones ** 2))
+	{
+		var posicion = 0;
+
+		for (let f = 1; f <= dimensiones; f++)
+		{
+			for (let c = 1; c <= dimensiones; c++)
+			{
+				var celdaACT = document.getElementById('celdaD' + dimensiones + 'f' + f + 'c' + c);
+				console.log('celdaD' + dimensiones + 'f' + f + 'c' + c + ' >>> ' + celdaACT);
+				if (bitaje[posicion] == '1')
+				{
+					//celdaACT.setAttribute('background-color', 'orange');
+					celdaACT.style.backgroundColor = "orange";
+				}
+				else
+				{
+					//celdaACT.setAttribute('background-color', 'grey');
+					celdaACT.style.backgroundColor = "grey";
+				}
+				++posicion;
+			}
+		}
+	}
+	else
+	{
+		console.log('Errata!!!');
+		console.log('Bitaje:' + bitaje + '.');
+		window.alert('Error! Deben ser ingresados exactamente ' + ((dimensiones ** 2) / 8) + ' números decimales.');
+	}
+}
+
+
+function clicboton8(){
+	var texto = window.prompt("Ingrese 8 números (separados por espacios)", "");
+	var dimensiones = 8;
+	mostrarBits8(convertirABits(texto, dimensiones), dimensiones);
+}
+
+function clicboton16(){
+	var texto = window.prompt("Ingrese 32 números (separados por espacios)", "");
+	var dimensiones = 16;
+	mostrarBits8(convertirABits(texto, dimensiones), dimensiones);
 }
 
 function iniciarGrilla(contenedor, dimension)
@@ -43,14 +156,4 @@ function inicializar()
 
 	var contenedor16 = document.getElementById("contenedor16")
 	iniciarGrilla(contenedor16, 16);
-}
-
-function clicboton8(){
-	var texto = window.prompt("Ingrese 8 números (separados por espacios)", "");
-
-}
-
-function clicboton16(){
-	var texto = window.prompt("Ingrese 32 números (separados por espacios)", "");
-
 }
