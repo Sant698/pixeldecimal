@@ -15,21 +15,42 @@ function decToBin(decimalSTR)
 
 }
 
-function inicializar() {
-	var contenedor = document.getElementById("grilla");
-	console.log("contenedor:", contenedor);
-
-	for (let x = 1; x < 256; x++)
+function iniciarGrilla(contenedor, dimension)
+{
+	for (let f = 1; f <= dimension; f++)
 	{
-		var nuevo = document.createElement("div");
-		nuevo.setAttribute('class', 'celda');
-		contenedor.appendChild(nuevo);
-	}
+		var filaN = document.createElement("div");
+		filaN.setAttribute('class', 'fila');
+		filaN.setAttribute('id', 'd' + dimension + 'fila' + f);
+		contenedor.appendChild(filaN);
 
-	
+		for (let c = 1; c <= dimension; c++)
+		{
+			var celdaN = document.createElement("div");
+			celdaN.setAttribute('class', 'celda');
+			celdaN.setAttribute('id', 'celdaD' + dimension + 'f' + f + 'c' + c);
+
+			filaN.appendChild(celdaN);
+
+		}
+	}
 }
 
-function clicboton(){
-	window.alert("Hola");
+function inicializar()
+{
+	var contenedor8 = document.getElementById("contenedor8");
+	iniciarGrilla(contenedor8, 8);
+
+	var contenedor16 = document.getElementById("contenedor16")
+	iniciarGrilla(contenedor16, 16);
+}
+
+function clicboton8(){
+	var texto = window.prompt("Ingrese 8 números (separados por espacios)", "");
+
+}
+
+function clicboton16(){
+	var texto = window.prompt("Ingrese 32 números (separados por espacios)", "");
 
 }
