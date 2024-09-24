@@ -22,9 +22,14 @@ function inicializar() {
 	for (let x = 1; x < 256; x++)
 	{
 		var nuevo = document.createElement("div");
-		nuevo.setAttribute('class', 'cuadrado');
+		nuevo.setAttribute('class', 'celda');
 		contenedor.appendChild(nuevo);
 	}
 
 	
+}
+
+function clicboton(){
+	window.alert("Hola");
+
 }

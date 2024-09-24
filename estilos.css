@@ -34,37 +34,42 @@ article
 	justify-content: center;
 	text-align: center;
 
+
+    align-self: center;
+    gap: 5px;
 }
 
-div.boton
+.boton
 {
+	display: inline-block;
+
 	border: 1px solid black;
 	background-color: lightcoral;
+	border-radius: 3px;
 	width: 250px;
 	height: 30px;
+
+	margin: 0px auto;
+
+	align-items: center;
+
 }
 
 
 #grilla
 {
-	/*border: 3px solid black;
-	background: lightblue;
-
-	padding: 3px;
-	margin: 3px;	
-	*/
 
 	display: grid;
-	/*grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px;
-	grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px;*/
 
 	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 	grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 
-	margin: 0 auto;
+	gap: 0;
+
+	margin: 30px auto;
 }
 
-.cuadrado
+div.celda
 {
 	border: 1px solid black;
 	width: 30px;
