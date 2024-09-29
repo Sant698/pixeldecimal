@@ -314,6 +314,7 @@ function ingresarValoresTx(texto, nombreVal, cantidadVal)
 				{
 					valor.value = decimal;
 					++posicionVal;
+					console.log("posicionVal: " + String(posicionVal));
 				}
 				else
 				{
@@ -321,25 +322,33 @@ function ingresarValoresTx(texto, nombreVal, cantidadVal)
 				}
 				
 			}
-			else
-			{
-				valor.style.className = "error";
-			}
-			
+		}
+		else
+		{
+			banderaError = true;
 		}
 
-		if (posicionVal > cantidadVal)
+		if (posicionVal == cantidadVal)
 		{
-			window.alert("Ingresó una mayor cantidad de valores de los requeridos!!!");
+			if (!banderaError && (listado.length > cantidadVal))
+			{
+				window.alert("Ingresó una mayor cantidad de valores de los requeridos, el excedente será descartado");
+			}
 			break;
 		}
+	}
+
+	if (!banderaError && (listado.length < cantidadVal))
+	{
+		window.alert("Ingresó una menor cantidad de valores de los requeridos");
 	}
 
 
 	if (banderaError)
 	{
-		window.alert("Se hallaron valores no numéricos y fueron omitidos!!!");
+		window.alert("Se hallaron valores no numéricos y/o fuera de rango permitido, y fueron omitidos!!!");
 	}
+
 }
 
 function clicIngresarT()
