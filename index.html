@@ -20,35 +20,68 @@
     </header>    
 
     <section>      
-        <article>
+        <article id = "menu">
+            <div id ="selectorGrillas">
+                <div id="selector8" class="selectorAct" onclick="clicSelector8()">Grilla 8x8</div>
+                <div id="selector16" class="selectorDes" onclick="clicSelector16()">Grilla 16x16</div>
+            </div>
+
+            <p>Ingrese los números:</p>
+
+            <div id="numeros8">
+                <div class="subconjunto" id="numeros8-A">
+
+                </div>
+            </div>
+
+            <div id="numeros16">
+                <div class="subconjunto" id="numeros16-A">
+
+                </div>
+
+                <div class="subconjunto" id="numeros16-B">
+
+                </div>                                
+
+                <div class="subconjunto" id="numeros16-C">
+
+                </div>
+
+                <div class="subconjunto" id="numeros16-D">
+
+                </div>                                
+            </div>
+
+            <div class="boton" onclick="clicDibujar()">
+                 Dibujar   
+            </div>
+        </article>
+
+
+        <article id="resultado">
             <div id="contenedorG">
                 <div id="grilla8" class="grilla">
                     <h3>Grilla de 8x8</h3>
 
                     <div id="contenedor8">
-                    </div>    
-
-                    <div onclick="clicboton8()" class="boton">
-                        Ingresar números
+                        <!-- Acá van las celdas de la grilla chica -->
                     </div>
-
-                    <div onclick="clicbotonLimpiar()" class="boton2">
-                        Limpiar grillas    
-                    </div>                    
+                                       
                 </div> 
 
                 <div id="grilla16" class="grilla">
                     <h3>Grilla de 16x16</h3>
 
                     <div id="contenedor16">
+                        <!-- Acá van las celdas de la grilla grande -->                           
                     </div>    
 
-                    <div onclick="clicboton16()" class="boton">
-                        Ingresar números
-                    </div>
                 </div>      
             </div>
 
+            <div onclick="clicBotonNuevo()" class="boton2">
+                    Nuevo dibujo
+            </div> 
                         
         </article>      
     </section>
