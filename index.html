@@ -1,100 +1,275 @@
 <!DOCTYPE html>
-<html lang="es">  
-<head>    
-    <title>Pixel-Decimales</title>    
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <meta name="title" content="Pixel a decimal">
-    <meta name="description" content="Herramienta que permite convertir números decimales en una imagen">    
-    <link href="estilos.css" rel="stylesheet">
-    <script src="pixel.js">
-        numero = windows.prompt("Ingrese número");
-        binario = decToBin(numero);
-        window.alert(binario);       
-    </script>  
-</head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelDecimal</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <script src="binarios.js"></script>
+    <script src="controles.js" defer onload="inicializar()"></script>
+</head>
 
-<body onload="inicializar()">    
+<body>
     <header>
-        <h1>Pixel-decimal</h1>      
-        <p>Esta página permite convertir números decimales en un conjunto de pixeles que representan una imagen (usando dos colores)</p>
-    </header>    
+        <h1>Pixel-decimal</h1>
+        <p>
+            Esta página permite convertir un conjunto de números decimales 
+            en pixeles que representan una imagen (usando dos colores).
+        </p>
+    </header>
 
-    <section>      
-        <article id = "menu">
-            <div id ="selectorGrillas">
-                <div id="selector8" class="selectorAct" onclick="clicSelector8()">Grilla 8x8</div>
-                <div id="selector16" class="selectorDes" onclick="clicSelector16()">Grilla 16x16</div>
-            </div>
+    <nav>
+        <div id="dim8" class="bDimensionSEL">
+            Grilla 8x8
+        </div>
 
-            <p>Ingrese los números:</p>
+        <div id="dim16" class="bDimension">
+            Grilla 16x16
+        </div>        
+    </nav>
 
-            <div id="numeros8">
-                <div class="subconjunto" id="numeros8-A">
-
-                </div>
-            </div>
-
-            <div id="numeros16">
-                <div class="subconjunto" id="numeros16-A">
-
-                </div>
-
-                <div class="subconjunto" id="numeros16-B">
-
-                </div>                                
-
-                <div class="subconjunto" id="numeros16-C">
-
-                </div>
-
-                <div class="subconjunto" id="numeros16-D">
-
-                </div>                                
-            </div>
-
-            <div id="bIngreso" class="boton2" onclick="clicIngresarT()">
-                 Ingresar valores (modo texto)
-            </div>
-
-            <div class="boton" onclick="clicDibujar()">
-                 Dibujar   
-            </div>
-
+    <section>
+        <article id="ingreso8" class="ingresos">
+            <h2>Ingreso de números</h2>
             
+            <div id="lineas8" class="botonera">
+                <div id="linea8-1" class="linea">
+                    <div id="n8-1">0</div>
+                    <div id="n8-2">0</div>
+                    <div id="n8-3">0</div>
+                    <div id="n8-4">0</div>
+                    <div id="n8-5">0</div>
+                    <div id="n8-6">0</div>
+                    <div id="n8-7">0</div>
+                    <div id="n8-8">0</div>
+                </div>
+            </div>
+
+            <div class="botonera">
+                <div id="dibujar8" class="bDibujar" title="Transforma los números en un dibujo">
+                    Dibujar
+                </div>
+
+                <div id="linea8" class="boton" title="Permite ingresar los números de una sola vez, en forma de texto">
+                    Ingresar valores
+                </div>
+
+                <div id="guardar8" class="boton" title="Permite guardar el dibujo localmente">
+                    Guardar
+                </div>
+
+                <div id="cargar8" class="boton" title="Permite cargar un dibujo guardado localmente">
+                    Cargar
+                </div>
+            </div>
         </article>
 
+        <article id="ingreso16" class="ingresosOCULT">
+            <h2>Ingreso de números</h2>
+            
+            <div id="lineas16" class="botonera">
+                <div id="linea16-1" class="linea">
+                    <div id="n16-1">0</div>
+                    <div id="n16-2">0</div>
+                    <div id="n16-3">0</div>
+                    <div id="n16-4">0</div>
+                    <div id="n16-5">0</div>
+                    <div id="n16-6">0</div>
+                    <div id="n16-7">0</div>
+                    <div id="n16-8">0</div>
+                    <div id="lineaA">Ingresar línea A</div>
+                </div>
 
-        <article id="resultado">
-            <div id="contenedorG">
-                <div id="grilla8" class="grilla">
-                    <h3>Grilla de 8x8</h3>
-
-                    <div id="contenedor8">
-                        <!-- Acá van las celdas de la grilla chica -->
-                    </div>
-                                       
-                </div> 
-
-                <div id="grilla16" class="grilla">
-                    <h3>Grilla de 16x16</h3>
-
-                    <div id="contenedor16">
-                        <!-- Acá van las celdas de la grilla grande -->                           
-                    </div>    
-
-                </div>      
+                <div id="linea16-2" class="linea">
+                    <div id="n16-9">0</div>
+                    <div id="n16-10">0</div>
+                    <div id="n16-11">0</div>
+                    <div id="n16-12">0</div>
+                    <div id="n16-13">0</div>
+                    <div id="n16-14">0</div>
+                    <div id="n16-15">0</div>
+                    <div id="n16-16">0</div>
+                    <div id="lineaB">Ingresar línea B</div>
+                </div>
+                
+                <div id="linea16-3" class="linea">
+                    <div id="n16-17">0</div>
+                    <div id="n16-18">0</div>
+                    <div id="n16-19">0</div>
+                    <div id="n16-20">0</div>
+                    <div id="n16-21">0</div>
+                    <div id="n16-22">0</div>
+                    <div id="n16-23">0</div>
+                    <div id="n16-24">0</div>
+                    <div id="lineaC">Ingresar línea C</div>
+                </div>
+                
+                <div id="linea16-4" class="linea">
+                    <div id="n16-25">0</div>
+                    <div id="n16-26">0</div>
+                    <div id="n16-27">0</div>
+                    <div id="n16-28">0</div>
+                    <div id="n16-29">0</div>
+                    <div id="n16-30">0</div>
+                    <div id="n16-31">0</div>
+                    <div id="n16-32">0</div>
+                    <div id="lineaD">Ingresar línea D</div>
+                </div>                
             </div>
 
-            <div onclick="clicBotonNuevo()" class="boton2">
-                    Nuevo dibujo
-            </div> 
-                        
-        </article>      
-    </section>
-</body>
+            <div class="botonera">
+                <div id="dibujar16" class="bDibujar">
+                    Dibujar
+                </div>
 
-<footer>
-    <p>NTICx - Escuelas 7, 14 y 18 - contacto: smolinero2@abc.gob.ar</p>
-</footer>  
+                <div id="guardar16" class="boton">
+                    Guardar
+                </div>
+
+                <div id="cargar16" class="boton">
+                    Cargar
+                </div>
+            </div>
+        </article>
+        
+        <article id="dibujo8" class="dibujoOCULT">
+            <h2>Dibujo resultante</h2>
+            <div id="grilla8" class="grilla">
+                <div id="fila8-1" class="fila">
+                    <div id="g8-1"></div>
+                    <div id="g8-2"></div>
+                    <div id="g8-3"></div>
+                    <div id="g8-4"></div>
+                    <div id="g8-5"></div>
+                    <div id="g8-6"></div>
+                    <div id="g8-7"></div>
+                    <div id="g8-8"></div>
+                </div>
+
+                <div id="fila8-2" class="fila">
+                    <div id="g8-9"></div>
+                    <div id="g8-10"></div>
+                    <div id="g8-11"></div>
+                    <div id="g8-12"></div>
+                    <div id="g8-13"></div>
+                    <div id="g8-14"></div>
+                    <div id="g8-15"></div>
+                    <div id="g8-16"></div>
+                </div>                
+
+                <div id="fila8-3" class="fila">
+                    <div id="g8-17"></div>
+                    <div id="g8-18"></div>
+                    <div id="g8-19"></div>
+                    <div id="g8-20"></div>
+                    <div id="g8-21"></div>
+                    <div id="g8-22"></div>
+                    <div id="g8-23"></div>
+                    <div id="g8-24"></div>
+                </div>
+
+                <div id="fila8-4" class="fila">
+                    <div id="g8-25"></div>
+                    <div id="g8-26"></div>
+                    <div id="g8-27"></div>
+                    <div id="g8-28"></div>
+                    <div id="g8-29"></div>
+                    <div id="g8-30"></div>
+                    <div id="g8-31"></div>
+                    <div id="g8-32"></div>
+                </div>
+
+                <div id="fila8-5" class="fila">
+                    <div id="g8-33"></div>
+                    <div id="g8-34"></div>
+                    <div id="g8-35"></div>
+                    <div id="g8-36"></div>
+                    <div id="g8-37"></div>
+                    <div id="g8-38"></div>
+                    <div id="g8-39"></div>
+                    <div id="g8-40"></div>
+                </div>                
+
+                <div id="fila8-6" class="fila">
+                    <div id="g8-41"></div>
+                    <div id="g8-42"></div>
+                    <div id="g8-43"></div>
+                    <div id="g8-44"></div>
+                    <div id="g8-45"></div>
+                    <div id="g8-46"></div>
+                    <div id="g8-47"></div>
+                    <div id="g8-48"></div>
+                </div>
+                
+                <div id="fila8-7" class="fila">
+                    <div id="g8-49"></div>
+                    <div id="g8-50"></div>
+                    <div id="g8-51"></div>
+                    <div id="g8-52"></div>
+                    <div id="g8-53"></div>
+                    <div id="g8-54"></div>
+                    <div id="g8-55"></div>
+                    <div id="g8-56"></div>
+                </div>
+
+                <div id="fila8-8" class="fila">
+                    <div id="g8-57"></div>
+                    <div id="g8-58"></div>
+                    <div id="g8-59"></div>
+                    <div id="g8-60"></div>
+                    <div id="g8-61"></div>
+                    <div id="g8-62"></div>
+                    <div id="g8-63"></div>
+                    <div id="g8-64"></div>
+                </div>                                
+            </div>
+
+            <div id="botonera8" class="botonera">
+                <div id="volver8" class="boton" title="Permite volver al modo edición">
+                    Volver a Ingreso
+                </div>                
+            </div>
+        </article>
+
+        <!-- TODO: poner id en 16x16 -->
+        
+        <article id="dibujo16" class="dibujoOCULT">
+            <h2>Dibujo resultante</h2>
+            <div id="grilla16" class="grilla">
+                <!--
+                <div id="fila16-1" class="fila">
+                    <div id="g16-1"></div>
+                    <div id="g16-2"></div>
+                    <div id="g16-3"></div>
+                    <div id="g16-4"></div>
+                    <div id="g16-5"></div>
+                    <div id="g16-6"></div>
+                    <div id="g16-7"></div>
+                    <div id="g16-8"></div>
+                    <div id="g16-1"></div>
+                    <div id="g16-2"></div>
+                    <div id="g16-3"></div>
+                    <div id="g16-4"></div>
+                    <div id="g16-5"></div>
+                    <div id="g16-6"></div>
+                    <div id="g16-7"></div>
+                    <div id="g16-8"></div>                    
+                </div>
+                -->
+            </div>
+            
+            <div id="botonera16" class="botonera">
+                <div id="volver16" class="boton" title="Permite volver al modo edición">
+                    Volver a Ingreso
+                </div>                
+            </div>
+        </article>
+    </section>
+    
+    <footer>
+        NTICx - Escuelas 7, 14 y 18 - contacto: smolinero2@abc.gob.ar
+    </footer>
+    
+</body>
 
 </html>
