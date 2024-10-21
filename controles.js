@@ -345,7 +345,7 @@ function crearGrilla16()
     {
         let fNueva = document.createElement("div");
         fNueva.setAttribute('class', 'fila');
-        //fNueva.setAttribute('id', "fila16-" + String(fila));
+        fNueva.setAttribute('id', "fila16-" + String(fila));
         grilla16.appendChild(fNueva);
 
         for (let columna = 1; columna <=16; columna++)

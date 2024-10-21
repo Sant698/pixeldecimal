@@ -129,8 +129,12 @@ article h2
     flex-direction: row;
     justify-content: center;
     gap: 3px;
+    
+    flex-wrap: wrap;
 
     margin-bottom: 5px;
+
+    /*background-color: orange;*/
 }
 
 .linea div
@@ -146,12 +150,25 @@ article h2
     background-color: lightblue;
 }
 
-/* grilla */
+/* Botonera con varias líneas diferentes */
+div#linea16-2 div, div#linea16-4 div
+{
+    background-color: rgb(216, 138, 150);
+}
+
+/* grilla normal*/
 div.grilla div.fila div
 {
     border: 1px solid black;
     height: 30px;
     width: 30px;
+}
+
+/* grilla 16x16 */
+div#grilla16.grilla div.fila div
+{
+    height: 15px;
+    width: 15px;
 }
 
 div.grilla
